@@ -5,20 +5,6 @@
 
 ---
 
-## Struktur Project
-
-```
-crypto_app/
-├── app.py                  # Backend Flask + semua algoritma kriptografi
-├── requirements.txt        # Daftar dependensi Python
-├── templates/
-│   └── index.html          # Halaman utama (HTML)
-└── static/
-    └── style.css           # Stylesheet (CSS)
-```
-
----
-
 ## Cara Menjalankan
 
 ### 1. Pastikan Python 3.8+ terinstal
