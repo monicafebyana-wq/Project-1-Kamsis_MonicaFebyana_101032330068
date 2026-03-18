@@ -1,5 +1,1 @@
-# requirements.txt — CipherLab
-# Hanya membutuhkan Flask sebagai dependency
-# Semua algoritma kriptografi diimplementasikan manual (tanpa library kriptografi)
-
 Flask==3.0.3
