@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica Febyana - Project 1 KamSis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="navbar-inner">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                    <rect x="1" y="1" width="8" height="8" rx="2.2" fill="#4F46E5"/>
+                    <rect x="11" y="1" width="8" height="8" rx="2.2" fill="#4F46E5" opacity="0.35"/>
+                    <rect x="1" y="11" width="8" height="8" rx="2.2" fill="#4F46E5" opacity="0.35"/>
+                    <rect x="11" y="11" width="8" height="8" rx="2.2" fill="#4F46E5"/>
+                </svg>
+            </div>
+            <span class="logo-text">Monica Febyana</span>
+        </div>
+        <span class="navbar-pill">Keamanan Sistem</span>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO / IDENTITY BANNER
+════════════════════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-inner">
+        <!-- Kiri: Info tugas -->
+        <div class="hero-left">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-dot"></span>
+                Tugas Mata Kuliah
+            </div>
+            <h1 class="hero-title">Enkripsi &amp;<br>Dekripsi Teks</h1>
+            <p class="hero-sub">Website ini dibuat untuk memenuhi tugas mata kuliah <strong>Keamanan Sistem</strong>.</p>
+            <div class="hero-chips">
+                <span class="chip chip-tea">TEA-CBC</span>
+                <span class="chip chip-tea">TEA-OFB</span>
+                <span class="chip chip-des">DES-CBC</span>
+                <span class="chip chip-des">DES-OFB</span>
+                <span class="chip chip-vig">Vigenere</span>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="id-card">
+                <div class="id-card-top">
+                    <div class="id-avatar">MF</div>
+                    <div class="id-status">
+                        <span class="id-status-dot"></span>
+                        Keamanan Sistem
+                    </div>
+                </div>
+                <div class="id-name">Monica Febyana</div>
+                <div class="id-meta">
+                    <div class="id-row">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
+                        101032330068
+                    </div>
+                    <div class="id-row">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        Tugas Mata Kuliah
+                    </div>
+                    <div class="id-row">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Keamanan Sistem
+                    </div>
+                </div>
+                <div class="id-divider"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="main">
+    <div class="card">
+
+        <div class="card-form">
+
+            <div class="row-2">
+                <div class="field">
+                    <label for="method">Metode Enkripsi</label>
+                    <div class="select-wrap">
+                        <select id="method" onchange="handleMethodChange()">
+                            <option value="TEA-CBC">TEA-CBC</option>
+                            <option value="TEA-OFB">TEA-OFB</option>
+                            <option value="DES-CBC">DES-CBC</option>
+                            <option value="DES-OFB">DES-OFB</option>
+                            <option value="Vigenere">Vigenere Cipher</option>
+                        </select>
+                        <svg class="select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <span class="field-hint" id="method-hint"></span>
+                </div>
+
+                <div class="field">
+                    <label for="key-input">Key / Kunci <span class="label-note" id="key-note"></span></label>
+                    <div class="input-group">
+                        <input type="text" id="key-input" autocomplete="off" spellcheck="false" placeholder="">
+                        <button class="regen-btn" onclick="generateKey()" title="Generate acak">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="input-text">
+                    Teks Input
+                    <span class="label-note">Plaintext untuk enkripsi &nbsp;·&nbsp; Ciphertext (hex) untuk dekripsi</span>
+                </label>
+                <textarea id="input-text" rows="5" placeholder="Ketik atau tempel teks di sini..."></textarea>
+            </div>
+
+            <div class="field" id="iv-field">
+                <label for="iv-input">IV (Initialization Vector) <span class="label-note" id="iv-note"></span></label>
+                <div class="input-group">
+                    <input type="text" id="iv-input" autocomplete="off" spellcheck="false" placeholder="">
+                    <button class="regen-btn" onclick="generateIV()" title="Generate acak">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                    </button>
+                </div>
+                <span class="field-hint">Di-generate otomatis. Saat dekripsi, gunakan IV yang sama dengan saat enkripsi.</span>
+            </div>
+
+            <div class="action-row">
+                <button class="btn btn-enc" onclick="processAction('encrypt')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Enkripsi
+                </button>
+                <button class="btn btn-dec" onclick="processAction('decrypt')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                    Dekripsi
+                </button>
+                <button class="btn btn-rst" onclick="clearAll()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div class="card-sep"></div>
+
+        <div class="card-output">
+
+            <div class="output-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Output
+            </div>
+
+            <div class="out-placeholder" id="result-placeholder">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".3"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <p>Hasil enkripsi atau dekripsi akan muncul di sini</p>
+            </div>
+
+            <div class="out-loading" id="loading-box" style="display:none;">
+                <div class="spinner"></div>
+                <span>Memproses...</span>
+            </div>
+
+            <div class="out-error" id="error-box" style="display:none;">
+                <div class="err-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div>
+                    <strong>Terjadi Kesalahan</strong>
+                    <p id="error-message"></p>
+                </div>
+            </div>
+
+            <div class="out-result" id="result-box" style="display:none;">
+                <div class="result-bar">
+                    <div class="result-bar-left">
+                        <span class="res-pill" id="result-pill">Enkripsi</span>
+                        <span class="res-algo" id="result-method"></span>
+                    </div>
+                    <button class="copy-btn" onclick="copyResult()">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        <span id="copy-label">Salin</span>
+                    </button>
+                </div>
+                <div class="result-text" id="result-content"></div>
+                <div class="result-meta" id="result-stats"></div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <p><strong>Monica Febyana</strong> &mdash; Tugas Mata Kuliah Keamanan Sistem</p>
+</footer>
+
+<script>
+const CFG = {
+    'TEA-CBC': { iv:true,  kl:32, il:16, kn:'32 karakter hex (128-bit)', ivn:'16 karakter hex (64-bit, auto)', hint:'TEA · CBC · Key 128-bit · IV 64-bit' },
+    'TEA-OFB': { iv:true,  kl:32, il:16, kn:'32 karakter hex (128-bit)', ivn:'16 karakter hex (64-bit, auto)', hint:'TEA · OFB · Key 128-bit · IV 64-bit' },
+    'DES-CBC': { iv:true,  kl:16, il:16, kn:'16 karakter hex (64-bit)',  ivn:'16 karakter hex (64-bit, auto)', hint:'DES · CBC · Key 64-bit · IV 64-bit' },
+    'DES-OFB': { iv:true,  kl:16, il:16, kn:'16 karakter hex (64-bit)',  ivn:'16 karakter hex (64-bit, auto)', hint:'DES · OFB · Key 64-bit · IV 64-bit' },
+    'Vigenere':{ iv:false, kl:null,il:null,kn:'Huruf A–Z (panjang bebas)', ivn:'', hint:'Vigenere · Key berupa huruf bebas · Tanpa IV' },
+};
+
+const rHex = n => Array.from({length:n}, ()=>'0123456789abcdef'[Math.random()*16|0]).join('');
+
+function handleMethodChange(){
+    const m = document.getElementById('method').value, c = CFG[m];
+    document.getElementById('method-hint').textContent = c.hint;
+    document.getElementById('key-note').textContent    = c.kn;
+    document.getElementById('key-input').placeholder  = c.kl ? `Contoh: ${rHex(c.kl)}` : 'Contoh: KUNCI';
+    const ivf = document.getElementById('iv-field');
+    if(c.iv){
+        ivf.style.display='flex';
+        document.getElementById('iv-note').textContent  = c.ivn;
+        document.getElementById('iv-input').placeholder = `Contoh: ${rHex(c.il)}`;
+        if(!document.getElementById('iv-input').value) document.getElementById('iv-input').value = rHex(c.il);
+    } else {
+        ivf.style.display='none';
+        document.getElementById('iv-input').value='';
+    }
+}
+
+function generateKey(){
+    const c=CFG[document.getElementById('method').value];
+    document.getElementById('key-input').value = c.kl ? rHex(c.kl)
+        : Array.from({length:8},()=>'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[Math.random()*26|0]).join('');
+}
+function generateIV(){
+    const c=CFG[document.getElementById('method').value];
+    if(c.il) document.getElementById('iv-input').value=rHex(c.il);
+}
+
+async function processAction(action){
+    hideAll();
+    document.getElementById('loading-box').style.display='flex';
+    try {
+        const r = await fetch('/process',{
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({
+                action,
+                method: document.getElementById('method').value,
+                text:   document.getElementById('input-text').value,
+                key:    document.getElementById('key-input').value,
+                iv:     document.getElementById('iv-input').value,
+            })
+        });
+        const d = await r.json();
+        document.getElementById('loading-box').style.display='none';
+        d.error ? showError(d.error) : showResult(d.result, action, d.method);
+    } catch {
+        document.getElementById('loading-box').style.display='none';
+        showError('Tidak dapat terhubung ke server. Pastikan Flask sudah berjalan (python app.py).');
+    }
+}
+
+function showResult(result, action, method){
+    const pill = document.getElementById('result-pill');
+    pill.textContent = action==='encrypt' ? 'Enkripsi' : 'Dekripsi';
+    pill.className   = 'res-pill ' + (action==='encrypt' ? 'pill-enc' : 'pill-dec');
+    document.getElementById('result-method').textContent  = method;
+    document.getElementById('result-content').textContent = result;
+    const ch = result.length;
+    const by = action==='encrypt' ? Math.floor(ch/2) : new TextEncoder().encode(result).length;
+    document.getElementById('result-stats').textContent = `${ch} karakter · ${by} byte`;
+    document.getElementById('result-box').style.display='flex';
+    document.getElementById('result-box').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function showError(msg){
+    document.getElementById('error-message').textContent=msg;
+    document.getElementById('error-box').style.display='flex';
+}
+
+function hideAll(){
+    ['result-placeholder','error-box','result-box'].forEach(id=>document.getElementById(id).style.display='none');
+}
+
+function clearAll(){
+    document.getElementById('input-text').value='';
+    document.getElementById('key-input').value='';
+    const c=CFG[document.getElementById('method').value];
+    document.getElementById('iv-input').value = c.iv ? rHex(c.il) : '';
+    ['loading-box','error-box','result-box'].forEach(id=>document.getElementById(id).style.display='none');
+    document.getElementById('result-placeholder').style.display='flex';
+}
+
+async function copyResult(){
+    try {
+        await navigator.clipboard.writeText(document.getElementById('result-content').textContent);
+        const el=document.getElementById('copy-label');
+        el.textContent='Tersalin!';
+        setTimeout(()=>{el.textContent='Salin';},2000);
+    } catch { alert('Gagal menyalin.'); }
+}
+
+handleMethodChange();
+</script>
+</body>
+</html>
